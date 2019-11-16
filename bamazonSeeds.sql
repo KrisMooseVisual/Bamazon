@@ -3,7 +3,7 @@ CREATE DATABASE bamazon_DB;
 
 USE bamazon_DB;
 
-CREATE TABLE products (
+CREATE TABLE overview (
   id INT NOT NULL AUTO_INCREMENT,
   product_name VARCHAR(45) NOT NULL,
   department_name VARCHAR(45) NOT NULL,
@@ -12,32 +12,32 @@ CREATE TABLE products (
   PRIMARY KEY (id)
 );
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("Television", "KrisMoose Visual 5k 60in TV", "Electronics", 899.99, 150);
+-- INSERT INTO Electronic (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("KrisMoose Visual 5k 60in TV", "Television", 899.99, 150);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("Blender", "Turbo Crush Blenderizer", "Kitchen_Appliances", 69.99, 250);
+-- INSERT INTO Kitchen (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Turbo Crush Blenderizer", "Kitchen Appliances", 69.99, 250);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("Game System", "Stoney StayPlaytion 5", Electronics, 499.99, 30);
+-- INSERT INTO Gaming (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Stoney StayPlaytion 5", "Game System", 499.99, 30);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("Chilly McLounge Chair", Home_Decor, 299.00, 50);
+-- INSERT INTO Furniture (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Chilly McLounge Chair", "Home Decor", 299.00, 50);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("Scrub-A-Dub Soap", "" 3.10, 120);
+-- INSERT INTO Bath (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Scrub-A-Dub Soap 6pack", "Soaps", 12.99, 120);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("Dungeon & Dragons 24k Gold d20 dice", 99.99, 15);
+-- INSERT INTO Entertainment (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Dungeon & Dragons 24k Gold d20 dice", "Gaming", 99.99, 15);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("vanilla", 2.50, 100);
+-- INSERT INTO Fashion (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Moovado Watch", "Mens Fashion", 259.99, 150);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("chocolate", 3.10, 120);
+-- INSERT INTO Bedroom  (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Turkish Towels", "Bath and Decor", 49.99, 350);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("strawberry", 3.25, 75);
+-- INSERT INTO Toys (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Fuzzy Wuzzy Bearz", "Toys", 89.99, 400);
 
-INSERT INTO products (item_id, product_name, department_name, price, stock_quantitiy)
-VALUES ("strawberry", 3.25, 75);
+-- INSERT INTO Dental (product_name, department_name, price, stock_quantitiy)
+-- VALUES ("Ultra Sonic Toothbrush", "Dental Care", 199.99, 90);
