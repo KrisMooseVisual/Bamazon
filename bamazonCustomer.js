@@ -28,8 +28,8 @@ connection.connect(function(err) {
   // run the start function after the connection is made to prompt the user
   //start();
 });
-
 // test if connection works, if it does, run promptUser function
+    //CONNECTION A SUCCESS!
 
 //IN promptUser function
   // step 1 - display available products with their ID #s
