@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-//var inquirer = require("inquirer");
+var inquirer = require("inquirer");
 require("dotenv").config();
 
 
@@ -26,13 +26,15 @@ connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId + "\n");
   // run the start function after the connection is made to prompt the user
-  //start();
-});
-// test if connection works, if it does, run promptUser function
+
+    // test if connection works, if it does, run promptUser function
     //CONNECTION A SUCCESS!
+  startInventory();
+});
 
 //IN promptUser function
-  // step 1 - display available products with their ID #s
+  //display available products with their ID #s
+  function startInventory()
   // step 2 - Use inquirer to ask the user for the ID # of the product they want
   // step 3 - Query the database to check if the ID # corresponds to an existing ID # in the products table
 
