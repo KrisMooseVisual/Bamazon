@@ -34,8 +34,30 @@ connection.connect(function(err) {
 
 //IN promptUser function
   //display available products with their ID #s
-  function startInventory()
-  // step 2 - Use inquirer to ask the user for the ID # of the product they want
+  function startInventory() {
+    inquirer
+    .prompt({
+      name: "departmentOrAll",
+      type: "list",
+      message: "Would you like to choose your department or choose all items",
+      choices: ["Department", "Show All Items", "Exit Store"]
+    })
+    .then(function(answer) {
+      // Depending on whats was chosen, either enter department list, or show all available items
+      if (answer.departmentOrAll === "Department") {
+        enterDepartment();
+      }
+      else if (answer.departmentOrAll === "Show All Items"){
+        enterAllItems();
+      }
+      else{
+        connection.end();
+      }
+    });
+  }
+  //Use inquirer to ask the user for the ID # of the product they want
+
+  
   // step 3 - Query the database to check if the ID # corresponds to an existing ID # in the products table
 
       // if their response is "Q" or "q", connection.end();
