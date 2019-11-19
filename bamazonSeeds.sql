@@ -43,10 +43,12 @@ INSERT INTO product (product_name, department_name, price, stock_quantity)
 VALUES ("Ultra Sonic Toothbrush", "Hygene", 199.99, 90);
 
 INSERT INTO product (product_name, department_name, price, stock_quantity)
-VALUES ("Brushy Tooth Tooth Pste", "Hygene", 9.99, 650);
+VALUES ("Brushy Tooth Tooth Paste", "Hygene", 9.99, 650);
 
 INSERT INTO product (product_name, department_name, price, stock_quantity)
 VALUES ("Street Brawler II", "Gaming & Toys", 59.99, 150);
 
 INSERT INTO product  (product_name, department_name, price, stock_quantity)
 VALUES ("Plush Kitty Throw Pillow", "Home Decor", 29.99, 350);
+
+SELECT * FROM products;
