@@ -191,7 +191,7 @@ function enterStore() {
         },
       },
       {
-        name: "product_name",
+        name: "product",
         type: "input",
         message: "Great choice! How many would you like to buy?",
       },
@@ -204,32 +204,29 @@ function enterStore() {
           }
         }
         // determine if stock quantity is good and drop stock quantity
-        if (chosenItem.product_name < parseInt(answer.stock_quantity)) {
+        function removeStockNum(itemId, productName, departmentName, price, stockQuantity) {
           connection.query(
             "UPDATE product SET ? WHERE ?",
             [
               {
-                stock_quantity: chosenItem.stock_quantity = answer.chosenQty,
-                product_name: chosenItem.product_name + (chosenItem.price * answer.chosenQty)
+                stock_quantity: stockQuantity - parseInt(productName)
               },
               {
-                item_id: chosenItem.item_id
+                item_id: parseInt(itemId)
               }
             ],
-            function (error) {
+            function (error, response) {
               if (error) throw err;
               console.log("-------------------------------------------------------------------------")
               console.log("You've added to your Bamazon cart! Would you like to continue shopping?")
               console.log("-------------------------------------------------------------------------")
+              
             }
+            
           );
+          
         }
-        // Quantity too high, update db, let the user know, then restart
-        else {
-          // Not enough in stock start again
-          console.log("We're sorry, we don't have enough stock for the quantity your asking for. Try again...");
-          start();
-        }
+      
 
       })
 
