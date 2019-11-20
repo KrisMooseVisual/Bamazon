@@ -4,6 +4,8 @@
   "description": "",
   "main": "bamazonCustomer.js",
   "dependencies": {
+    "ascii-art": "^2.1.6",
+    "columnify": "^1.5.4",
     "console.table": "^0.10.0",
     "dotenv": "^8.2.0",
     "inquirer": "^7.0.0",
