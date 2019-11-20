@@ -37,7 +37,7 @@ function start() {
 
     var table = new table({
       head: ["Product Name", "Department Name", "Price", "Stock Quantity"]
-      });
+    });
 
     for (var i = 0; i < res.length; i++) {
       table.push([results[i].product_name, results[i].department_name, "$" + results[i].price, results[i].stock_quantity]);
@@ -45,9 +45,11 @@ function start() {
       console.log("-----------------------------------");
     }
   });
+
   // logging query being run
   console.log(query.sql);
-}
+};
+
 // Setting inquire prompt for choice of Department, or show all items.
 // function start() {
 //   inquirer
