@@ -198,9 +198,35 @@ function enterStore() {
       .then(function (answer) {
         var chosenItem;
         for (var i = 0; i < results.length; i++) {
-          if (results[i].product_name === answer.choice) {
+          if (results[i].product === answer.choice) {
             chosenItem = results[i];
           }
+        }        
+        // determine if quantity is good.
+        if (chosenItem.stock_quantity < parseInt(answer.product_name)) {
+          // bid was high enough, so update db, let the user know, and start over
+          connection.query(
+            "UPDATE product SET ? WHERE ?",
+            [
+              {
+                stock_quantity: answer.product_name
+              },
+              {
+                id: chosenItem.id
+              }
+            ],
+            function(error) {
+              if (error) throw err;
+              console.log("You've successfully purchased an item at Bamazon!! Would you like to continue shopping?");
+              start();
+            }
+          );
+        }
+        
+        else {
+          // Not enough in stock start again
+          console.log("We're sorry, we don't have enough stock for the quantity your asking for. Try again...");
+          start();
         }
 
       })
