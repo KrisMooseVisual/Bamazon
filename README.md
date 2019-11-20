@@ -25,3 +25,10 @@ This assignment was to make an Amazon like app. Making it into an online store c
 
  - If the item doesn't have enough in stock, you'll be prompted with a "not enough stock, try again" and it will force you to make another decision.
 
+ ### Technologies Used:
+  - MySQL
+  - JavaScript
+  - jSON
+  - Inquirer
+  - Columnify
+
