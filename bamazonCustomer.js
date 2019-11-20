@@ -169,6 +169,7 @@ function startInventory() {
       }
     });
 }
+
 // function for ad
 function enterStore() {
   // querying the database for all items sold
@@ -180,7 +181,7 @@ function enterStore() {
       {
         name: "product_name",
         type: "rawlist",
-        message: "What would you like to buy? I hear 'Street Brawler II' is a pretty good game.",
+        message: "What would you like to buy?",
         choices: function () {
           var choiceArray = [];
           for (var i = 0; i < results.length; i++) {
@@ -198,31 +199,32 @@ function enterStore() {
       .then(function (answer) {
         var chosenItem;
         for (var i = 0; i < results.length; i++) {
-          if (results[i].product === answer.choice) {
+          if (results[i].stock_quantity === answer.choice) {
             chosenItem = results[i];
           }
-        }        
-        // determine if quantity is good.
-        if (chosenItem.stock_quantity < parseInt(answer.product_name)) {
-          // bid was high enough, so update db, let the user know, and start over
+        }
+        // determine if stock quantity is good and drop stock quantity
+        if (chosenItem.product_name < parseInt(answer.stock_quantity)) {
           connection.query(
             "UPDATE product SET ? WHERE ?",
             [
               {
-                stock_quantity: answer.product_name
+                stock_quantity: chosenItem.stock_quantity = answer.chosenQty,
+                product_name: chosenItem.product_name + (chosenItem.price * answer.chosenQty)
               },
               {
-                id: chosenItem.id
+                item_id: chosenItem.item_id
               }
             ],
-            function(error) {
+            function (error) {
               if (error) throw err;
-              console.log("You've successfully purchased an item at Bamazon!! Would you like to continue shopping?");
-              start();
+              console.log("-------------------------------------------------------------------------")
+              console.log("You've added to your Bamazon cart! Would you like to continue shopping?")
+              console.log("-------------------------------------------------------------------------")
             }
           );
         }
-        
+        // Quantity too high, update db, let the user know, then restart
         else {
           // Not enough in stock start again
           console.log("We're sorry, we don't have enough stock for the quantity your asking for. Try again...");
@@ -230,34 +232,9 @@ function enterStore() {
         }
 
       })
+
   })
 }
-// step 3 - Query the database to check if the ID # corresponds to an existing ID # in the products table
-// connection.connect(function (err) {
-//   if (err) throw err;
-//   con.query("SELECT * FROM product", function (err, result, fields) {
-//     if (err) throw err;
-//     console.log(result);
-//   });
-// });
 
-      // if their response is "Q" or "q", connection.end();
-
-    // select * from products where id - userResponse
-// Once we get response from database, check if the length of the response is greater than 0
-    // make sure to console.log to check that it's working
-    // if its not, tell the user the items doesn't exist and call the promptUser function again
-
-  // Use inquirer again to ask the user for how many they want.
-  // Check quantity from the database query response, see if it's greater than or equal to the under that the user wants (if statement)
-    // If user;s request is greater than the available quantity, tell the user its not in stock and call promptUser fucntion again 
-
-  // If there are enough in stock, calculate what the new quantitiy will be by subtracting the users's purchase quantitify from the current quantity. (store this value in a variable)
-
-  // Query the databased to update the new quantity using UPDATE quantitify to new quantitiy where ID is the ID that the user chose
-    // Tell the user their purchase was successful, and tell them how much they paid 
-    // multiply the quantity by the price of the product
-
-    // call promptUser again
 
 
