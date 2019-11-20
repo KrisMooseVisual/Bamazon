@@ -4,7 +4,8 @@ This assignment was to make an Amazon like app. Making it into an online store c
 
 ## App Demo
 * Click link below to view demo video
-[!Demo Vid](https://drive.google.com/file/d/1WoJufe9vMqJphjr1USPFcbzARFM4QuO9/view)
+
+- [!Demo Vid](https://drive.google.com/file/d/1WoJufe9vMqJphjr1USPFcbzARFM4QuO9/view)
 
 ## About The App
 * This is like an Amazon online store. Creating a database using MySQL, you'll be able to see a list of items that are for sale, how many are in stock, and the product name. When you place your order and the quantity of the item, the store's inventory should drop minus the quantity purchased.
