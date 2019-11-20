@@ -169,7 +169,6 @@ function startInventory() {
       }
     });
 }
-
 // function for ad
 function enterStore() {
   // querying the database for all items sold
@@ -181,7 +180,7 @@ function enterStore() {
       {
         name: "product_name",
         type: "rawlist",
-        message: "What would you like to buy?",
+        message: "What would you like to buy? I hear 'Street Brawler II' is a pretty good game.",
         choices: function () {
           var choiceArray = [];
           for (var i = 0; i < results.length; i++) {
@@ -191,7 +190,7 @@ function enterStore() {
         },
       },
       {
-        name: "product",
+        name: "product_name",
         type: "input",
         message: "Great choice! How many would you like to buy?",
       },
@@ -199,37 +198,38 @@ function enterStore() {
       .then(function (answer) {
         var chosenItem;
         for (var i = 0; i < results.length; i++) {
-          if (results[i].stock_quantity === answer.choice) {
+          if (results[i].product_name === answer.choice) {
             chosenItem = results[i];
           }
         }
-        // determine if stock quantity is good and drop stock quantity
-        function removeStockNum(itemId, productName, departmentName, price, stockQuantity) {
+        // determine if stock quantity is good.
+        if (chosenItem.stock_quantity < parseInt(answer.product_name)) {
+          // Quantity too high, update db, let the user know, then restart
           connection.query(
             "UPDATE product SET ? WHERE ?",
             [
               {
-                stock_quantity: stockQuantity - parseInt(productName)
+                stock_quantity: answer.product_name
               },
               {
-                item_id: parseInt(itemId)
+                id: chosenItem.id
               }
             ],
-            function (error, response) {
+            function (error) {
               if (error) throw err;
-              console.log("-------------------------------------------------------------------------")
-              console.log("You've added to your Bamazon cart! Would you like to continue shopping?")
-              console.log("-------------------------------------------------------------------------")
-              
+              console.log("You've successfully purchased an item at Bamazon!! Would you like to continue shopping?");
+
             }
-            
           );
-          
         }
-      
+
+        else {
+          // Not enough in stock start again
+          console.log("We're sorry, we don't have enough stock for the quantity your asking for. Try again...");
+          exit();
+        }
 
       })
-
   })
 }
 
